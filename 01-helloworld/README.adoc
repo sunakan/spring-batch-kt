@@ -1,0 +1,99 @@
+= Helloworld
+
+.実行まで
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle bootRun
+----
+
+.実行結果(1回目)
+----
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.1)
+
+2021-01-10 09:34:05.185  INFO 175 --- [           main] c.e.helloworld.HelloworldApplicationKt   : Starting HelloworldApplicationKt using Java 11.0.9.1 on d8c6a80fbd9f with PID 175
+(/home/gradle/app/build/classes/kotlin/main started by root in /home/gradle/app)
+2021-01-10 09:34:05.186  INFO 175 --- [           main] c.e.helloworld.HelloworldApplicationKt   : No active profile set, falling back to default profiles: default
+-------------------Hello Step 1
+-------------------Hello Step 2
+-------------------Hello Job
+2021-01-10 09:34:05.877  INFO 175 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-10 09:34:05.930  INFO 175 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-10 09:34:06.028  INFO 175 --- [           main] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: POSTGRES
+2021-01-10 09:34:06.089  INFO 175 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2021-01-10 09:34:06.148  INFO 175 --- [           main] c.e.helloworld.HelloworldApplicationKt   : Started HelloworldApplicationKt in 1.21 seconds (JVM running for 1.516)
+2021-01-10 09:34:06.150  INFO 175 --- [           main] o.s.b.a.b.JobLauncherApplicationRunner   : Running default command line with: []
+2021-01-10 09:34:06.180  INFO 175 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=job]] launched with the following parameters: [{}]
+======================================================ジョブ開始
+2021-01-10 09:34:06.203  INFO 175 --- [           main] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step]
+-------------------Hello Tasklet
+Hello, World!
+2021-01-10 09:34:06.221  INFO 175 --- [           main] o.s.batch.core.step.AbstractStep         : Step: [step] executed in 17ms
+2021-01-10 09:34:06.241  INFO 175 --- [           main] o.s.batch.core.job.SimpleStepHandler     : Duplicate step [step] detected in execution of job=[job]. If either step fails, b$th will be executed again on restart.
+2021-01-10 09:34:06.246  INFO 175 --- [           main] o.s.batch.core.job.SimpleStepHandler     : Executing step: [step]
+-------------------Hello Tasklet
+Hello, World!
+2021-01-10 09:34:06.258  INFO 175 --- [           main] o.s.batch.core.step.AbstractStep         : Step: [step] executed in 10ms
+======================================================ジョブ終了
+2021-01-10 09:34:06.265  INFO 175 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=job]] completed with the following parameters: [{}] and th$ following status: [COMPLETED] in 73ms
+2021-01-10 09:34:06.275  INFO 175 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-01-10 09:34:06.289  INFO 175 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+BUILD SUCCESSFUL in 19s
+4 actionable tasks: 3 executed, 1 up-to-date
+----
+
+.実行結果(2回目以降)
+----
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.1)
+
+2021-01-10 09:37:09.400  INFO 302 --- [           main] c.e.helloworld.HelloworldApplicationKt   : Starting HelloworldApplicationKt using Java 11.0.9.1 on d8c6a80fbd9f with PID 302
+(/home/gradle/app/build/classes/kotlin/main started by root in /home/gradle/app)
+2021-01-10 09:37:09.401  INFO 302 --- [           main] c.e.helloworld.HelloworldApplicationKt   : No active profile set, falling back to default profiles: default
+-------------------Hello Step 1
+-------------------Hello Step 2
+-------------------Hello Job
+2021-01-10 09:37:10.036  INFO 302 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-10 09:37:10.095  INFO 302 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-10 09:37:10.134  INFO 302 --- [           main] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: POSTGRES
+2021-01-10 09:37:10.180  INFO 302 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2021-01-10 09:37:10.253  INFO 302 --- [           main] c.e.helloworld.HelloworldApplicationKt   : Started HelloworldApplicationKt in 1.096 seconds (JVM running for 1.433)
+2021-01-10 09:37:10.254  INFO 302 --- [           main] o.s.b.a.b.JobLauncherApplicationRunner   : Running default command line with: []
+2021-01-10 09:37:10.311  INFO 302 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=job]] launched with the following parameters: [{}]
+======================================================ジョブ開始
+2021-01-10 09:37:10.331  INFO 302 --- [           main] o.s.batch.core.job.SimpleStepHandler     : Step already complete or not restartable, so no action to execute: StepExecution:
+id=2, version=3, name=step, status=COMPLETED, exitStatus=COMPLETED, readCount=0, filterCount=0, writeCount=0 readSkipCount=0, writeSkipCount=0, processSkipCount=0, commitCount=1, rollbackCount=0, exitDescription=
+2021-01-10 09:37:10.336  INFO 302 --- [           main] o.s.batch.core.job.SimpleStepHandler     : Step already complete or not restartable, so no action to execute: StepExecution:
+id=2, version=3, name=step, status=COMPLETED, exitStatus=COMPLETED, readCount=0, filterCount=0, writeCount=0 readSkipCount=0, writeSkipCount=0, processSkipCount=0, commitCount=1, rollbackCount=0, exitDescription=
+======================================================ジョブ終了
+2021-01-10 09:37:10.345  INFO 302 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=job]] completed with the following parameters: [{}] and the following status: [COMPLETED] in 20ms
+2021-01-10 09:37:10.357  INFO 302 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-01-10 09:37:10.374  INFO 302 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+BUILD SUCCESSFUL in 2s
+4 actionable tasks: 1 executed, 3 up-to-date
+----
+
+.クリーンアップ
+----
+$ make docker-down
+----
