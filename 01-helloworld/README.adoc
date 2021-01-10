@@ -95,6 +95,8 @@ BUILD SUCCESSFUL in 2s
 
 2つのstepが走ってないことに注目
 
+ジョブは最初のステップを実行し、トランザクションを開始し、タスクレットを実行し、その結果でJobRepositoryを更新
+
 .クリーンアップ
 ----
 $ make docker-down
