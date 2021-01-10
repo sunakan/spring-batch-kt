@@ -93,6 +93,8 @@ BUILD SUCCESSFUL in 2s
 4 actionable tasks: 1 executed, 3 up-to-date
 ----
 
+2つのstepが走ってないことに注目
+
 .クリーンアップ
 ----
 $ make docker-down
