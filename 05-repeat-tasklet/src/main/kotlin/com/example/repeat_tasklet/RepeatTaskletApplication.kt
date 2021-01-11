@@ -23,7 +23,6 @@ class RepeatTaskletApplication {
             .build()
     }
 
-
     @Bean
     fun step1(stepBuilderFactory: StepBuilderFactory): Step {
         return stepBuilderFactory.get("step1")
@@ -44,7 +43,7 @@ class RepeatTaskletApplication {
             val stepExecutionContext = chunkContext.stepContext
                 .stepExecution
                 .executionContext
-            val count = when(stepExecutionContext["count"]) {
+            val count = when (stepExecutionContext["count"]) {
                 is Int -> stepExecutionContext["count"] as Int
                 else -> 0
             }
@@ -53,7 +52,7 @@ class RepeatTaskletApplication {
             println(stepExecutionContext)
             println("---------------------------------------------------")
             val ret = when {
-                count < 5 -> {stepExecutionContext.put("count", count+1); RepeatStatus.CONTINUABLE}
+                count < 5 -> { stepExecutionContext.put("count", count + 1); RepeatStatus.CONTINUABLE }
                 else -> RepeatStatus.FINISHED
             }
             println("---------------------------------------------------After")

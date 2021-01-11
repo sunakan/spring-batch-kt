@@ -9,5 +9,4 @@ class RepeatTaskletApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }
