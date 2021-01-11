@@ -7,7 +7,7 @@ nameパラメタがないと怒られるようにしている（Validation）
 $ make docker-build
 $ make docker-bash
 コンテナ内
-$ gradle bootRun --args="name=John"
+$ gradle bootRun --args='name=hoge firstName=foo lastName=bar executionDate(date)=2021/1/1'
 ----
 
 .実行まで(その2)
@@ -16,17 +16,12 @@ $ make docker-build
 $ make docker-bash
 コンテナ内
 $ gradle build
-$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar name=hoge firstName=taro lastName=tanaka
 ----
 
-.jobParameterを渡す（識別子が変わる）
+.jobParameterを渡す（日付をDate型で）
 ----
-$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar name=bar
-----
-
-.jobParameterを渡す（日付をDate型で渡したり、2つ渡したり）
-----
-$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar executionDate\(date\)=2017/11/28 name=tanaka
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar name=hoge firstName=foo lastName=bar executionDate\(date\)=2021/1/1
 ----
 
 2つ渡したとき、job_execution_idは同じ

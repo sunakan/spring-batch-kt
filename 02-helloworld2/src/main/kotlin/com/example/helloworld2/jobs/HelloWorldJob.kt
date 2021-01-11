@@ -4,11 +4,14 @@ import com.example.helloworld2.batch.HelloWorldTasklet
 import com.example.helloworld2.batch.HelloWorldTasklet2
 import com.example.helloworld2.batch.ParameterValidator
 import org.springframework.batch.core.Job
+import org.springframework.batch.core.JobParametersValidator
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepScope
+import org.springframework.batch.core.job.CompositeJobParametersValidator
+import org.springframework.batch.core.job.DefaultJobParametersValidator
 import org.springframework.batch.core.step.tasklet.Tasklet
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -20,7 +23,7 @@ class HelloWorldJob {
     @Bean
     fun job(jobBuilderFactory: JobBuilderFactory, step1: Step, step2: Step): Job {
         return jobBuilderFactory.get("basicjob")
-            .validator(ParameterValidator())
+            .validator(parameterValidator())
             .start(step1)
             .next(step2)
             .build()
@@ -37,7 +40,6 @@ class HelloWorldJob {
             .tasklet(tasklet(null))
             .build()
     }
-
     @StepScope
     @Bean
     fun tasklet(@Value("#{jobParameters['name']}") name: String?): Tasklet {
@@ -59,4 +61,26 @@ class HelloWorldJob {
     // ...
     // Caused by: java.lang.IllegalStateException: No context holder available for step scope
     // ...
+
+    @Bean
+    fun parameterValidator(): JobParametersValidator {
+        // 継承したやつを返すもよし
+        // return ParameterValidator()
+
+        // ここでValidatorを作るとか
+        val validatorA = DefaultJobParametersValidator()
+        validatorA.setRequiredKeys(arrayOf("name"))
+        // return validatorA
+
+        // optionとしてnameを許可しないと、validatorAと組み合わせたとき怒られる
+        val validatorB = DefaultJobParametersValidator(
+            arrayOf("firstName", "lastName"),
+            arrayOf("name", "executionDate")
+        )
+        validatorB.afterPropertiesSet()
+        val validator = CompositeJobParametersValidator()
+        // 2種のバリデータ
+        validator.setValidators(listOf(validatorA, validatorB))
+        return validator
+    }
 }
