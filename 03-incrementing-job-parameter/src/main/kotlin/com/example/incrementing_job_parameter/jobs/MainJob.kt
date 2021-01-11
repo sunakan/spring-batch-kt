@@ -48,13 +48,9 @@ class MainJob {
             println("-------------------")
             when (parameters) {
                 is JobParameters -> JobParametersBuilder(parameters)
-                    .addDate("currentDate", Date())
-                    .toJobParameters()
                 else -> JobParametersBuilder()
-                    .addDate("currentDate", Date())
-                    .toJobParameters()
-            }
+            }.addDate("currentDate", Date())
+            .toJobParameters()
         }
     }
-
 }
