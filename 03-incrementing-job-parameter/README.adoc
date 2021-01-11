@@ -1,0 +1,11 @@
+= インクリメンタルなJobパラメタ
+
+.実行まで
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle bootRun
+----
+
+日付とか可能
