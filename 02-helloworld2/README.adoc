@@ -1,5 +1,7 @@
 = Helloworld2
 
+nameパラメタがないと怒られるようにしている（Validation）
+
 .実行まで
 ----
 $ make docker-build
@@ -19,17 +21,12 @@ $ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar
 
 .jobParameterを渡す（識別子が変わる）
 ----
-$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar foo=bar
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar name=bar
 ----
 
-.jobParameterを渡す（日付をDate型で渡す）
+.jobParameterを渡す（日付をDate型で渡したり、2つ渡したり）
 ----
-$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar executionDate\(date\)=2017/11/28
-----
-
-.jobParameterを渡す（2つ渡す）
-----
-$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar executionDate\(date\)=2017/11/28 name=Tanaka
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar executionDate\(date\)=2017/11/28 name=tanaka
 ----
 
 2つ渡したとき、job_execution_idは同じ

@@ -62,9 +62,3 @@ tasks.register("downloadDependencies") {
         println("Downloaded all dependencies: $allDeps")
     }
 }
-
-//tasks.getByName<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
-//    if (project.hasProperty('args')) {    // "args" というプロパティが渡されていたら
-//        args project.args.split('\\s+')   // 空白文字で split して、 run タスクの args オプションにセットする
-//    }
-//}
