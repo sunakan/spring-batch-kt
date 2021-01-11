@@ -1,0 +1,15 @@
+= JobExecutionContextを使って、Step間で情報を共有
+
+.実行まで
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle bootRun --args="name=apple"
+----
+
+ジョブパラメタではなくて、JobExecutionContextを利用している
+
+ただし、そもそもの設計としてStep毎に独立するべきらしい
+
+だから、この方法を禁止してしまう方が良さそう
