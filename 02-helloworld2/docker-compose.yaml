@@ -1,0 +1,21 @@
+---
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - type: bind
+        source: ${PWD}/
+        target: /home/gradle/app/
+    depends_on:
+      - db
+  db:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app-local
+      TZ: Asia/Tokyo

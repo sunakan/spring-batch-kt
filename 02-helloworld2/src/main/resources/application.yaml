@@ -1,0 +1,9 @@
+---
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/app-local
+    username: postgres
+    password: postgres
+  batch:
+    initialize-schema: always

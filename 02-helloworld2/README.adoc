@@ -1,0 +1,37 @@
+= Helloworld2
+
+.実行まで
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle bootRun --args="name=John"
+----
+
+.実行まで(その2)
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle build
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar
+----
+
+.jobParameterを渡す（識別子が変わる）
+----
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar foo=bar
+----
+
+.jobParameterを渡す（日付をDate型で渡す）
+----
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar executionDate\(date\)=2017/11/28
+----
+
+.jobParameterを渡す（2つ渡す）
+----
+$ java -jar build/libs/helloworld2-0.0.1-SNAPSHOT.jar executionDate\(date\)=2017/11/28 name=Tanaka
+----
+
+2つ渡したとき、job_execution_idは同じ
+
+batch_job_execution_paramsテーブル見たらわかる
