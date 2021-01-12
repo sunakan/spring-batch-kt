@@ -1,0 +1,10 @@
+= chunk
+
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle bootRun
+----
+
+10個ずつまとめて処理
