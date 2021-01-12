@@ -6,9 +6,13 @@
 $ make docker-build
 $ make docker-bash
 コンテナ内
-$ gradle bootRun
+$ gradle bootRun --args='message=hello'
 ----
 
 別にStepを並列実行できるわけではないらしい
 
 多分使わないかも
+
+同じ引数とかだったら2回目以降失敗する
+
+理由は謎

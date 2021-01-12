@@ -9,5 +9,4 @@ class CallableTaskletApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }
