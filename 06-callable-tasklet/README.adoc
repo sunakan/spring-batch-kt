@@ -1,0 +1,14 @@
+== Callable<RepeatStatus>
+
+別スレッドでTasklet的な？
+
+----
+$ make docker-build
+$ make docker-bash
+コンテナ内
+$ gradle bootRun
+----
+
+別にStepを並列実行できるわけではないらしい
+
+多分使わないかも
